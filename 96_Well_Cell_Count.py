@@ -7,7 +7,6 @@ import os
 import glob
 
 # Specify the directory where images are:
-#dir = "D:\\Pandego\\DSTI\\Code Practice\\Python Practice\\Project_1_Cell-count\\Images\\ImDEAD\\"
 #dir = "D:\\usr\\...\\Images\\"
 
 # Get directory of all 96 images:
