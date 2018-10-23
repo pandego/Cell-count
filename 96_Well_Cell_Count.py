@@ -22,15 +22,15 @@ for i in range(len(directory_list)):
     im = (cv2.imread(directory_list[i]))*255
     #pylab.figure(0)
     #pylab.imshow(im)
-    gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-    gray = cv2.GaussianBlur(gray, (5,5), 0)
+    im_gray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+    im_gray = cv2.GaussianBlur(im_gray, (5,5), 0)
     maxValue = 255
-    adaptiveMethod = cv2.ADAPTIVE_THRESH_GAUSSIAN_C #cv2.ADAPTIVE_THRESH_MEAN_C #cv2.ADAPTIVE_THRESH_GAUSSIAN_C
-    thresholdType = cv2.THRESH_BINARY#_INV #cv2.THRESH_BINARY #cv2.THRESH_BINARY_INV
+    adaptiveMethod = cv2.ADAPTIVE_THRESH_GAUSSIAN_C # or cv2.ADAPTIVE_THRESH_MEAN_C
+    thresholdType = cv2.THRESH_BINARY#_INV
     # Play with the next two values for optimal counting:
     blockSize = 5 #Size of neigberhood -> must be odd number like 3,5,7,9,11 (The bigger it is, the more restrict it is!)
     C = -5 #Constant to be subtracted to the mean value (The more negative it is, the more restrict it is!)
-    im_thresholded = cv2.adaptiveThreshold(gray, maxValue, adaptiveMethod, thresholdType, blockSize, C) 
+    im_thresholded = cv2.adaptiveThreshold(im_gray, maxValue, adaptiveMethod, thresholdType, blockSize, C) 
     labelarray, particle_count = ndimage.measurements.label(im_thresholded)
     
     #pylab.figure(1)
